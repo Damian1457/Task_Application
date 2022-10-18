@@ -5,7 +5,6 @@ import com.crud.tasks.domain.TaskDto;
 import com.crud.tasks.mapper.TaskMapper;
 import com.crud.tasks.service.DbService;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.boot.model.source.spi.TableSource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +27,7 @@ public class TaskController {
     public ResponseEntity<TaskDto> getTask(@PathVariable Long taskId) throws TaskNotFoundException {
         return ResponseEntity.ok(taskMapper.mapToTaskDto(dbService.getTask(taskId)));
     }
-    @DeleteMapping(value = "{taskId}")
+    @DeleteMapping(value = "/{taskId}")
     public void deleteTask(@PathVariable Long taskId) {
         dbService.deleteTask(taskId);
     }
